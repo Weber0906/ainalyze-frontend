@@ -1,0 +1,12 @@
+#main-logo {
+    width: 100vw;
+    height: 4rem;
+    /* padding: 10px; */
+   
+    background-image: url(../../../public/AInalyze.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 1;
+    
+}

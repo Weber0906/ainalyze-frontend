@@ -25,7 +25,7 @@ function Stocks() {
               Authorization: `Bearer ${token}`,
             },
           };
-          const url = exchangeId ? `http://localhost:5001/api/stocks/${exchangeId}` : 'http://localhost:5001/api/stocks';
+          const url = exchangeId ? `https://ainalyze-back.onrender.com/api/stocks/${exchangeId}` : 'https://ainalyze-back.onrender.com/api/stocks';
         const response = await axios.get(url, config);
         console.log(url)
         setStocks(response.data);

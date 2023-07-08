@@ -25,7 +25,7 @@ function Exchanges() {
               Authorization: `Bearer ${token}`,
             },
           };
-          const response = await axios.get('http://localhost:5001/api/exchanges', config);
+          const response = await axios.get('https://ainalyze-back.onrender.com/api/exchanges', config);
           console.log(response)
           setExchanges(response.data);
           setLoading(false);

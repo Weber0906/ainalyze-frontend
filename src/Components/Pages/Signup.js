@@ -3,6 +3,7 @@ import {Form, Button, Card, Alert} from "react-bootstrap";
 import { useAuth } from '../../contexts/AuthContext';
 import {Link, useNavigate} from 'react-router-dom';
 import Particle from '../Particles';
+import GoogleIcon from '@mui/icons-material/Google';
 
 export default function Signup() {
   const emailRef = useRef()
@@ -49,7 +50,7 @@ export default function Signup() {
   return (
     <>
     <Particle />
-      <Card className='w-50 text-center mx-auto'>
+      <Card id='signup' className='w-75 w-md-50 text-center mx-auto'>
         <Card.Body >
           <h2 className='text-center mb-4'>Sign Up</h2>
           {error && <Alert variant="danger">{error}</Alert>}
@@ -66,9 +67,12 @@ export default function Signup() {
               <Form.Label>Password Confirmation</Form.Label>
                 <Form.Control type='password' ref={passwordConfirmRef} required />
             </Form.Group>
-            <Button disabled={loading} className='w-50 mt-2' type='submit'>Sign Up</Button>
-          </Form>
-          <Button onClick={handleSubmitGoogle} disabled={loading} className='w-50 mt-2' type='submit'>Sign Up With Google</Button>
+            <Button disabled={loading} className='w-100 w-md-50 mt-2' type='submit'>Sign Up</Button>
+            <Button onClick={handleSubmitGoogle} disabled={loading} className='w-100 w-md-50 mt-2' type='submit'>
+            <GoogleIcon className='mx-2' />
+            Sign Up With Google
+            </Button>
+            </Form>
         </Card.Body>
       </Card>
       <div className='w-50 text-center mx-auto mt-2'>

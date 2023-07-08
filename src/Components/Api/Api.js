@@ -16,19 +16,22 @@ export const fetchPolygonData = async ({ act_symbol }) => {
   
       const delayBetweenRequests = 5000; // Adjust this value as per your rate limit
   
-      const [newsResponse, aggregatedDataResponse, tickerDetailsResponse] = await Promise.all([
+      const [tickerDetailsResponse, aggregatedDataResponse, newsResponse  ] = await Promise.all([
         fetchWithTimeout(tickerDetailsUrl, delayBetweenRequests),
-        fetchWithTimeout(newsUrl, delayBetweenRequests),
         fetchWithTimeout(aggregatedDataUrl, delayBetweenRequests),
+        fetchWithTimeout(newsUrl, delayBetweenRequests),
       ]);
   
       const tickerDetails = await tickerDetailsResponse.json();
       const aggregatedData = await aggregatedDataResponse.json();
       const newsData = await newsResponse.json();
+      console.log(tickerDetails)
+      console.log(aggregatedData)
+      console.log(newsData)
   
       // Extract the necessary information from the responses
       const extractedTickerDetails = extractDataFromResponse(tickerDetails, ['market_cap', 'name', 'total_employees'], 'results');
-      const extractedAggregatedData = extractDataFromResponse(aggregatedData,['c', 'h', 'l', 'n', 'o', 't', 'v', 'vw'], 'results');
+      const extractedAggregatedData = extractDataFromResponse(aggregatedData,['T', 'c', 'h', 'l', 'n', 'o', 't', 'v', 'vw'], 'results');
       const extractedNewsData = extractDataFromResponse(newsData, ['title', 'description'], 'results');
       
       
@@ -48,9 +51,6 @@ export const fetchPolygonData = async ({ act_symbol }) => {
       throw error;
     }
   };
-
-
-
   
   const fetchWithTimeout = (url, timeout) => {
     return new Promise((resolve, reject) => {

@@ -3,18 +3,16 @@ import Signup from "./Pages/Signup"
 import { Container } from "react-bootstrap"
 import { AuthProvider } from "../contexts/AuthContext"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
-import Dashboard from "./Pages/Dashboard"
-import Login from "./Pages/Login"
-import ForgotPassword from "./Pages/ForgotPassword"
-import UpdateProfile from "./Pages/UpdateProfile"
-import Exchanges from "./Pages/Exchanges"
-import Stocks from "./Pages/Stocks"
-import Navbar from "./Partials/Navbar"
-import Homepage from "./Pages/Homepage"
-import Analysis from "./Pages/Ainalyze"
-import './Partials/Navbar.css'
-import './Pages/Homepage.css'
-import './Pages/Ainalize.css'
+import Dashboard from "./Pages/Dashboard.js"
+import Login from "./Pages/Login.js"
+import ForgotPassword from "./Pages/ForgotPassword.js"
+import UpdateProfile from "./Pages/UpdateProfile.js"
+import Exchanges from "./Pages/Exchanges.js"
+import Stocks from "./Pages/Stocks.js"
+import Navbar from "./Partials/Navbar.js"
+import Homepage from "./Pages/Homepage.js"
+import Analysis from "./Pages/Ainalyze.js"
+import '../static/App.css'
 
 function App() {
 

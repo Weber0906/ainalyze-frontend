@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import { Card, Container, Col, Row, Button } from 'react-bootstrap';
 import { useNavigate, useParams } from 'react-router-dom';
 import Search from '../Partials/Search';
 import Particle from '../Particles';
+import { auth } from '../../firebase';
 
 function Stocks() {
   const [stocks, setStocks] = useState([]);
@@ -15,12 +17,20 @@ function Stocks() {
   useEffect(() => {
     async function fetchStocks() {
       try {
-        const url = exchangeId ? `http://localhost:5001/api/stocks/${exchangeId}` : 'http://localhost:5001/api/stocks';
-        const response = await fetch(url);
+        const user = auth.currentUser;
+        if (user) {
+          const token = await user.getIdToken();
+          const config = {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          };
+          const url = exchangeId ? `http://localhost:5001/api/stocks/${exchangeId}` : 'http://localhost:5001/api/stocks';
+        const response = await axios.get(url, config);
         console.log(url)
-        const data = await response.json();
-        setStocks(data);
+        setStocks(response.data);
         setLoading(false);
+        }
       } catch (error) {
         console.error('Error fetching stocks:', error);
         setLoading(false);
@@ -46,7 +56,7 @@ function Stocks() {
 
 
   if (loading) {
-    ( 
+    return ( 
       <div>
         <Particle />
         <div>Loading...</div>;
@@ -55,19 +65,19 @@ function Stocks() {
   }
 
   return (
-    <div id='stocks-container' className="d-flex flex-wrap align-items-center justify-content-center mt-5">
+    <div id='stocks-container' className="d-flex flex-wrap mt-5">
       
-      <Container >
+      <Container className='w-100' >
         <Particle />
         <h1>Stocks</h1>
         <Search
                 searchQuery={searchQuery}
                 setSearchQuery={setSearchQuery}
                 handleSearch={handleSearch} />
-        <Row className="w-100 align-items-center justify-content-center">
+        <Row >
           {(searchQuery.length === 0 ? stocks : searchResults).map((stock) => (
-            <Col key={stock.id} xs={12} sm={8} md={6} lg={4} className="d-flex">
-              <Card key={stock.id} className="mx-2 my-2" style={{width:"300px", height:"300px"}}>
+            <Col key={stock.id} xs={12} sm={8} md={6} lg={4} className="d-flex justify-content-center">
+              <Card id='stock' key={stock.id} className="mx-2 my-2" style={{width:"300px", height:"300px"}}>
                 <Card.Body >
                   <Card.Title>{stock.act_symbol}</Card.Title>
                   <Card.Text>{stock.company_name}</Card.Text>

@@ -12,7 +12,8 @@ export default function Homepage() {
 
       <div id='main-logo' ></div>
       <div>
-          <p>Stock market analysis using the AI (OpenchatGPT powered)</p>
+          <h4>Stock market analysis using the AI (OpenchatGPT powered)</h4> <br/>
+          <p>Free trial version - one stock AI.nalysis per minute available</p>
           <Button as={NavLink} to={'/signup'}>Get Started</Button>
       </div>
       

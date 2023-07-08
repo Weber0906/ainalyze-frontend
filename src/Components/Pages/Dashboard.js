@@ -23,14 +23,14 @@ export default function Dashboard() {
     return (
         <>
         <Particle />
-            <Card className='w-50 text-center mx-auto'>
+            <Card id="profile" className='w-50 text-center mx-auto'>
                 <Card.Body>
                     <h2 className="text-center mb-4">Profile</h2>
                     {error && <Alert variant="danger">{error}</Alert>}
                     {currentUser && (
                         <>
                             <strong>Email:</strong> {currentUser.email} <br/>
-                            <strong>Name:</strong> {currentUser.name} 
+                            <strong>Name:</strong> {currentUser.displayName} 
 
                             <Link to='/update-profile' className="btn btn-primary w-100 mt-3">
                                 Update Profile

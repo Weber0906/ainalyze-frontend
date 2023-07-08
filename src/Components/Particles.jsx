@@ -31,7 +31,7 @@ const particlesLoaded = (container) => {
             "value": 30,
             "density": {
                 "enable": false,
-                "value_area": 900
+                "value_area": 600
             }
         },
         "color": {
@@ -44,7 +44,7 @@ const particlesLoaded = (container) => {
             }
         },
         "opacity": {
-            "value": 0.8,
+            "value": 0.6,
             "random": false,
             "anim": {
                 "enable": false,
@@ -76,9 +76,9 @@ const particlesLoaded = (container) => {
         "line_linked": {
             "enable": true,
             "distance": 600,
-            "color": "#000000",
-            "opacity": 0.4,
-            "width": 2
+            "color": "#0b4d87",
+            "opacity": 0.2,
+            "width": 1
         },
         "move": {
             "enable": true,

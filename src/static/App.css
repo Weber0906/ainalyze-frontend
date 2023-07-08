@@ -30,5 +30,6 @@
 
 #exchange, #stock, #profile, #login, #signup, #passwordupd, #update-profile {
     background-color: rgb(166, 204, 191);
+    opacity: 0.5;
     border: 2px solid rgb(105, 138, 245);
 }
